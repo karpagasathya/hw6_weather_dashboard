@@ -24,7 +24,7 @@ A weather dashboard with search functionality to find current weather conditions
 * Include a search history so that users can access their past search items. Clicking on the city name should perform a new search that returns current and future conditions for that city.
 
 
-You can run this Application and check your own city weather conditions [here](https://karpagasathya.github.io/hw6_weather_dashboard/)
+You can run this Application and check your own city weather conditions [here](https://karpagasathya.github.io/weather_dashboard/)
 
 ## ScreenShots
 
