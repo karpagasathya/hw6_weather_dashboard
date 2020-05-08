@@ -29,5 +29,5 @@ You can run this Application and check your own city weather conditions [here](h
 ## ScreenShots
 
 ![](assets/images/image1.jpg)
-![](assets/images/image1.jpg)
-![](assets/images/image1.jpg)
+![](assets/images/image2.jpg)
+![](assets/images/image3.jpg)
