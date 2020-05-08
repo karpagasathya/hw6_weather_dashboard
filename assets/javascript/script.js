@@ -109,10 +109,10 @@ function getForecast(city) {
       let temperature = Math.floor(response.list[i].main.temp - 273.15) * 1.8 + 32;
       let humidity = response.list[i].main.humidity;
       let forecastDate = response.list[i].dt_txt.split(" ")[0].replace(/-/g, "/");
-      // var header = $("<h4>").addclass("mt-3").css("display", "block");
-      var card = $("<div>").addClass("card col-md-2 ml-4 bg-primary text-white");
+      $("#5day").removeClass(" d-none");
+      var card = $("<div>").addClass("card col-md-2 ml-4 mt-4 bg-primary text-white");
       var cardBody = $("<div>").addClass("card-body p-0");
-      var cardDate = $("<h6>").addClass("card-title").text(forecastDate);
+      var cardDate = $("<h6>").addClass("pt-3 card-title text-bold").text(forecastDate);
       var image = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
       var temp = $("<p>")
         .addClass("card-text")
@@ -121,7 +121,6 @@ function getForecast(city) {
 
       cardBody.append(cardDate, image, temp, humid);
       card.append(cardBody);
-      // $("#forecast").append(header);
       $("#forecast").append(card);
     }
   });
