@@ -4,16 +4,19 @@ $("#search-button").on("click", function (event) {
   event.preventDefault();
 
   var cityName = $("#city-input").val().trim();
+  if (cityName !== "") {
 
-  displayCurrentWeather(cityName);
-  getForecast(cityName);
-  renderSearchHistory(false);
+    displayCurrentWeather(cityName);
+    getForecast(cityName);
+    renderSearchHistory(false);
+  }
 });
 
 $("#city-input").keypress(function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     $("#search-button").click();
+    $("#city-input").val("");
   }
 });
 
@@ -33,7 +36,7 @@ function displayCurrentWeather(city) {
     url: queryURL,
     method: "GET",
     success: function (response) {
-      let temperature = Math.floor(response.main.temp - 273.15) * 1.8 + 32;
+      let temperature = parseFloat((Math.floor(response.main.temp - 273.15) * 1.8 + 32).toFixed(2));
       let windSpeed = response.wind.speed;
       let humidity = response.main.humidity;
       let cityDate = " (" + date.toLocaleDateString("en-US") + ") ";
@@ -48,7 +51,7 @@ function displayCurrentWeather(city) {
 
       let temp = $("<p>")
         .addClass("card-text")
-        .text("Temperature: " + Math.round(temperature) + String.fromCharCode(176) + "F");
+        .text("Temperature: " + temperature + String.fromCharCode(176) + "F");
       let wind = $("<p>").text("Wind Speed: " + windSpeed + "mph");
       let humid = $("<p>").text("Humidity:" + humidity + "%");
 
@@ -106,7 +109,7 @@ function getForecast(city) {
     $("#forecast").empty();
 
     for (var i = 0; i < response.list.length; i += 8) {
-      let temperature = Math.floor(response.list[i].main.temp - 273.15) * 1.8 + 32;
+      let temperature = parseFloat((Math.floor(response.list[i].main.temp - 273.15) * 1.8 + 32).toFixed(2));
       let humidity = response.list[i].main.humidity;
       let forecastDate = response.list[i].dt_txt.split(" ")[0].replace(/-/g, "/");
       $("#5day").removeClass(" d-none");
